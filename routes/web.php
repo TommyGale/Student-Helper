@@ -12,10 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/index', function () {
     return view('index');
 });
 
@@ -27,14 +23,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/post', function () {
-    return view('post');
-});
-
-Route::get('/test', function () {
-    return view('test');
+Route::get('/posts', function () {
+    return view('posts.posts');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
