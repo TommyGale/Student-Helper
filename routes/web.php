@@ -2,10 +2,10 @@
 
 use Illuminate\Http\Request;
 
-Route::resource('posts', 'ForumsController');
+Route::resource('posts' , 'PostsController');
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 });
 
 Route::get('/about', function () {
@@ -16,10 +16,4 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/posts', function () {
-    return view('posts.posts');
-});
-
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');

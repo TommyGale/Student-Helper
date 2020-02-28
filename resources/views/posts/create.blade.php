@@ -2,54 +2,27 @@
 
 @section('title')
 
-Create Post
+Create a Post
+
+@endsection
+
+@section('headImage')
+
+background-image: url('/img/home-bg.jpg')
+
+@endsection
+
+@section('headContent')
+
+<h1>Student Helper</h1>
+<span class="subheading">A place for students to help students!</span>
 
 @endsection
 
 @section('content')
 
-<h1>Create a New Post</h1>
-
-<form method ="POST" action="/posts">
-
-@csrf
-
-<div class="box">
-
-<div class ="field">
-
-<label class ="label" for="title">Title</label>
-
-<div class="control">
-
-<input type="text" name="title" placeholder="Post title" value="{{old('title')}}" class="input {{ $errors->has('title') ? 'is-danger' : ''}}" required>
-
+<div class="container">
+    
 </div>
 
-</div>
-
-<label class="label" for="description">Description</label>
-
-
-<div class ="control">
-
-<textarea name ="description" placeholder ="Post description" value ="{{ old('description')}}" class="input {{ $errors->has('description') ? 'is-danger' : ''}}" required></textarea>
-
-
-</div>
-</div>
-
-<div class="field">
-
-<div class ="control">
-
-<button type="submit" class="button is-link">Create Post</button>
-
-</div>
-</div>
-
-</div>
-
-@include ('errors.errors')
-</form>
 @endsection
