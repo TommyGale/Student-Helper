@@ -1,6 +1,39 @@
 @extends('layouts.main')
 
+<style>
+    
+    p {
+
+        text-align: center;
+    }
+</style>
+
+@section('title')
+
+Login
+
+@endsection
+
+@section('headLinks')
+
+<a href="/">Home</a>
+<a href="/login">Login</a>
+
+@endsection
+
+@section('headContent')
+
+<h2>Login</h2>
+
+@endsection
+
+
 @section('content')
+
+<br>
+
+<p>Haven't already got an account? <a href ="/register">Click here</a> to register now</p>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -62,6 +95,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
                             </div>
                         </div>
                     </form>
@@ -70,4 +104,7 @@
         </div>
     </div>
 </div>
+
+<br>
+
 @endsection

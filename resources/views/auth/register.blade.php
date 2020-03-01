@@ -1,6 +1,29 @@
 @extends('layouts.main')
 
+@section('title')
+
+Register
+
+@endsection
+
+@section('headLinks')
+
+<a href="/">Home</a>
+<a href="/register">Register</a>
+
+@endsection
+
+@section('headContent')
+
+<h2>Register</h2>
+
+@endsection
+
+
 @section('content')
+
+<br>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -74,4 +97,7 @@
         </div>
     </div>
 </div>
+
+<br>
+
 @endsection

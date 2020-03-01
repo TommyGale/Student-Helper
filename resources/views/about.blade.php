@@ -1,129 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
+@section('title')
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+About
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+@endsection
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+@section('headLinks')
 
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<a href="/">Home</a>
+<a href="/about">About</a>
 
-  <!-- Custom styles for this template -->
-  <link href="css/clean-blog.min.css" rel="stylesheet">
+@endsection
 
-</head>
+@section('headContent')
 
-<body>
+<h2>About Us</h2>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="index">Start Bootstrap</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="post">Sample Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+@endsection
 
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/about-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>About Me</h1>
-            <span class="subheading">This is what I do.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+@section('content')
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
-      </div>
-    </div>
-  </div>
+<!--================ Start About us Area ================-->
 
-  <hr>
+<section class="about_us_area section_gap_top">
+			<div class="container">
+				<div class="row about_content align-items-center">
+					<div class="col-lg-6">
+						<div class="section_content">
+							<h6>About Us</h6>
+							<h1>We Believe that <br>Interior beauty Lasts Long</h1>
+							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
+								especially in the workplace. That’s why it’s crucial that as women.</p>
+							<a class="primary_btn" href="#">Learn More</a>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="about_us_image_box justify-content-center">
+							<img class="img-fluid w-100" src="img/about_img.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+<!--================ End Frequently Asked Questions Area ================-->
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--================ Start Frequently Asked Questions Area ================-->
+		<section class="frequently_area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="main_title">
+							<h2>Frequently Asked Questions</h2>
+							<h1>Frequently Asked Questions</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row frequent_inner">
+					<div class="col-lg-5 col-md-5">
+						<div class="frequent_item">
+							<h3>We Believe that Interior beauty Lasts Long</h3>
+							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
+								especially in the workplace. That’s why it’s crucial that as women.</p>
+						</div>
+					</div>
+					<div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
+						<div class="frequent_item">
+							<h3>We Believe that Interior beauty Lasts Long</h3>
+							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
+								especially in the workplace. That’s why it’s crucial that as women.</p>
+						</div>
+					</div>
+					<div class="col-lg-5 col-md-5">
+						<div class="frequent_item">
+							<h3>We Believe that Interior beauty Lasts Long</h3>
+							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
+								especially in the workplace. That’s why it’s crucial that as women.</p>
+						</div>
+					</div>
+					<div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
+						<div class="frequent_item">
+							<h3>We Believe that Interior beauty Lasts Long</h3>
+							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
+								especially in the workplace. That’s why it’s crucial that as women.</p>
+						</div>
+					</div>
+					<div class="col-lg-5 col-md-5">
+						<div class="frequent_item last-child">
+							<h3>We Believe that Interior beauty Lasts Long</h3>
+							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
+								especially in the workplace. That’s why it’s crucial that as women.</p>
+						</div>
+					</div>
+					<div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
+						<div class="frequent_item last-child">
+							<h3>We Believe that Interior beauty Lasts Long</h3>
+							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
+								especially in the workplace. That’s why it’s crucial that as women.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--================ End Frequently Asked Questions Area ================-->
 
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
-
-</body>
-
-</html>
+		<!--================ Start Newsletter Area ================-->
+		<section class="newsletter_area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="newsletter_inner">
+							<h1>Subscribe Our Newsletter</h1>
+							<p>We won’t send any kind of spam</p>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<aside class="newsletter_widget">
+							<div id="mc_embed_signup">
+								<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+								 method="get" class="subscribe_form relative">
+									<div class="input-group d-flex flex-row">
+										<input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'"
+										 required="" type="email">
+										<button class="btn primary_btn">Subscribe</button>
+									</div>
+								</form>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--================ End Newsletter Area ================-->
+@endsection

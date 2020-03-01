@@ -18,7 +18,7 @@ class PostsController extends Controller
     {
         $posts = Post::all();
 
-         return view('posts.posts', compact('posts'));
+         return view('posts.index', compact('posts'));
     }
 
     
@@ -34,7 +34,7 @@ class PostsController extends Controller
     }
 
     
-    public function show($post)
+    public function show(Post $post)
     {
         $post = Post::where('id', $post)->firstOrFail();
 
@@ -43,17 +43,17 @@ class PostsController extends Controller
     }
 
    
-    public function edit($id)
+    public function edit(Post $post)
     {
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         //
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
         //
     }

@@ -1,6 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
+@section('title')
+
+Confirm Password
+
+@endsection
+
+@section('headImage')
+
+background-image: url('/img/home-bg.jpg')
+
+@endsection
+
+@section('headContent')
+
+<h1>Student Helper</h1>
+<span class="subheading">A place for students to help students!</span>
+
+@endsection
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
