@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Events\PostCreated;
 use Illuminate\Http\Request;
 
 
@@ -30,19 +31,8 @@ class PostsController extends Controller
    
     public function store(Post $post)
     {
-
-        request()->validate([
-            'title' => ['required', 'min:4','max:50'],
-        'description' => ['required', 'min:10','max:255']
-         ]);
-
-        $post = new Post();
-
-        $post->title = request('title');
-        $post->description = request('description');
-        $post->user_id = auth()->user()->id;
-
-        $post->save();
+        
+        auth()->user()->posts()->create($attributes= $this->validData());
 
         return redirect('/posts');
     }
@@ -58,7 +48,6 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
 
-    
     if($post->user_id !== auth()->id()){
             
           return redirect()->back();
@@ -69,7 +58,7 @@ class PostsController extends Controller
 
     public function update(Post $post)
     {
-        $post->update($this->validData());
+         $post->update($this->validData());
 
         return redirect('/posts/' . $post->id);
     }
@@ -82,14 +71,11 @@ class PostsController extends Controller
     }
 
     protected function validData() {
-    
-        
+
         return request()->validate([
          'title' => ['required', 'min:4','max:50'],
-        'description' => ['required', 'min:10','max:255']
-        
+        'description' => ['required', 'min:10','max:255']        
         ]);
-   
 
     }
 
