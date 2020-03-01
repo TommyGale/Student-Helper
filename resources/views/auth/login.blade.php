@@ -1,5 +1,11 @@
 @extends('layouts.main')
 
+@section('title')
+
+Login
+
+@endsection
+
 <style>
     
     p {
@@ -7,12 +13,6 @@
         text-align: center;
     }
 </style>
-
-@section('title')
-
-Login
-
-@endsection
 
 @section('headLinks')
 
