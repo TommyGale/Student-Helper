@@ -60,6 +60,9 @@ Posts
                                 </p>
                             </div>
                         </div>
+                        @can('update', $post)
+                        <a href="/posts/{{ $post->id}}/edit" class="blog_btn">Update Post</a>
+                        @endcan
                         <div class="navigation-area">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
@@ -90,109 +93,54 @@ Posts
                         </div>
                         <div class="comments-area">
                             <h4>Count the comments here!</h4>
-                            <form method ="POST" action = "/posts">
-                            	<div class= "control">
-					<input class="input @error('title') is-danger @enderror" type="text" name="title" id="title" value ="{{ old('title')}}" required>
+                            <form method="POST" action="/posts/{{ $post->id}}/comments">
+                            	 @csrf
+                            <div class= "control">
+                     <label class="label" for="description">Comment</label>
+					<textarea class="textarea @error('description') is-danger @enderror" name="description" id="description" required>{{ old('description')}}</textarea>
 
-					@error('title')
-						<p class="help is-danger">{{ $errors->first('title')}}</p>
+					@error('description')
+						<p class="help is-danger">{{ $errors->first('description')}}</p>
 					@enderror
 				</div> 
+
+				<br>
+
+				<div class="field is-grouped">
+						<div class="control">
+							<button class ="button is-link" type="submit">Submit</button>
+						</div>
+					</div>
                             </form>
+
                             <br>
                             <div class="comment-list">
+                            	@foreach ($post->comments as $comment)
+
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
                                             <img src="/img/blog/c1.jpg" alt="">
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#">Emilly Blunt</a></h5>
-                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <h5><a href="#">{{ $comment->user->name }}</a></h5>
+                                            <p class="date">{{ $comment->created_at}}</p>
                                             <p class="comment">
-                                                Never say goodbye till the end comes!
+                                                {{ $comment->description}}
                                             </p>
                                         </div>
                                     </div>
                                     <div class="reply-btn">
+                                    	 @can('update', $comment)
+                        				<a href="/posts/{{ $post->id}}/comments/{{ $comment->id}}/edit" class="blog_btn">Edit Comment</a>
+                        				 @endcan
                                            <a href="" class="btn-reply text-uppercase">reply</a> 
                                     </div>
                                 </div>
                             </div>	
-                            <div class="comment-list left-padding">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="img/blog/c2.jpg" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <h5><a href="#">Elsie Cunningham</a></h5>
-                                            <p class="date">December 4, 2017 at 3:12 pm </p>
-                                            <p class="comment">
-                                                Never say goodbye till the end comes!
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
-                                    </div>
-                                </div>
-                            </div>	
-                            <div class="comment-list left-padding">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="img/blog/c3.jpg" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <h5><a href="#">Annie Stephens</a></h5>
-                                            <p class="date">December 4, 2017 at 3:12 pm </p>
-                                            <p class="comment">
-                                                Never say goodbye till the end comes!
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
-                                    </div>
-                                </div>
-                            </div>	
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="img/blog/c4.jpg" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <h5><a href="#">Maria Luna</a></h5>
-                                            <p class="date">December 4, 2017 at 3:12 pm </p>
-                                            <p class="comment">
-                                                Never say goodbye till the end comes!
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
-                                    </div>
-                                </div>
-                            </div>	
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="img/blog/c5.jpg" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <h5><a href="#">Ina Hayes</a></h5>
-                                            <p class="date">December 4, 2017 at 3:12 pm </p>
-                                            <p class="comment">
-                                                Never say goodbye till the end comes!
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
-                                    </div>
+
+                            @endforeach
+                            
                                 </div>
                             </div>	                                             				
                         </div>

@@ -20,6 +20,17 @@ class Post extends Model
          return $this->belongsTo(User::class);
       }
 
+      public function comments(){
+       
+       return $this->hasMany(Comment::class);
+   }
+   
+   public function addComment($comment){
+       
+       $this->comments()->create($comment);
+       
+   }
+
    // public function getRouteKeyName()
    // {
    // 	return 'title';

@@ -22,6 +22,8 @@ Posts
 
 @section('headContent')
 
+<h2>Posts</h2>
+
 @endsection
 
 @section('content')
@@ -111,6 +113,9 @@ Posts
                                             <a href ="/posts/{{ $post->id}}"><h2>{{ $post->title }}</h2></a>
                                             <p>{{ $post->description}}</p>
                                             <a href="/posts/{{ $post->id}}" class="blog_btn">View More</a>
+                                            @can('update', $post)
+                                            <a href="/posts/{{ $post->id}}/edit" class="blog_btn">Update Post</a>
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>

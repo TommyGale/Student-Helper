@@ -31,19 +31,11 @@ Edit Post
 			@csrf
 			@method('PUT')
 
-			<div class = "field">
-				<label class="label" for="title">Title</label>
-
-				<div class= "control">
-					<input class="input" type="text" name="title" id="title" value="{{ $post->title }}">
-				</div> 
-				</div>
-
 				<div class="field">
 					<label class="label" for="description">Description</label>
 
 					<div class="contorl">
-						<textarea class="textarea" name="description" id="description">{{ $post->description }}</textarea>
+						<textarea class="textarea" name="description" id="description">{{ $comment->description }}</textarea>
 					</div>
 					</div>
 
