@@ -18,9 +18,13 @@ Route::get('/contact', function () {
 
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
+Route::put('/comments/{comment}', 'CommentsController@update');
+
 Route::get('/posts/{post}/comments/{comment}/edit', 'CommentsController@edit');
 
-Route::patch('/comments/{comment}', 'CommentsController@update');
+Route::delete('/comments/{comment}', 'CommentsController@destroy');
+
+
 
 
 

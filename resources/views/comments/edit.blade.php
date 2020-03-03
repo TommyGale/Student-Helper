@@ -2,7 +2,7 @@
 
 @section('title')
 
-Edit Post
+Edit Comment
 
 @endsection
 
@@ -24,9 +24,9 @@ Edit Post
 <div id="wrapper">
 	<div id="page" class="container">
 		
-		<h1 class="heading has-text-weight-bold is-size-4">Update Post</h1>
+		<h1 class="heading has-text-weight-bold is-size-4">Update Comment</h1>
 
-		<form method ="POST" action = "/posts/{{ $post->id}}">
+		<form method ="POST" action = "/comments/{{ $comment->id}}">
 
 			@csrf
 			@method('PUT')
@@ -49,14 +49,14 @@ Edit Post
 
 				<br>
 
-				<form method="POST" action="/posts/{{ $post->id}}">
+				<form method="POST" action="/comments/{{ $comment->id}}">
 
         		@csrf
 				@method('DELETE')
 
         		<div class="field is-grouped">
 						<div class="control">
-							<button class ="button is-link" type="submit">Delete Post</button>
+							<button class ="button is-link" type="submit">Delete Comment</button>
 						</div>
 					</div>
 

@@ -12,14 +12,15 @@ class CommentsController extends Controller
     {
         $this->middleware('auth')->except(['']);
     }
-    
-    public function update(Comment $comment) 
+
+     public function update(Comment $comment , Post $post)
     {
-           $comment->update($this->validData());
+        $comment->update($this->validData());
 
-        return redirect('/posts/' . $post->id);
+        return redirect('/posts/' . $comment->post->id);
     }
-
+    
+    
  public function store(Post $post) {
 
  		$attributes = $this->validData();
@@ -31,25 +32,23 @@ class CommentsController extends Controller
         return redirect('/posts/' .$post->id);
     }
 
-    public function edit(Comment $comment)
+    public function edit(Post $post, Comment $comment)
     {
-
-    if($comment->user_id !== auth()->id()){
-            
-          return redirect()->back();
-        }
-        
-       return view ('comments.edit', compact('comment')); 
+        return view ('comments.edit', compact('comment')); 
     }
     
-    
-    protected function validData() {
+    public function destroy(Post $post, Comment $comment)
+    {
+      $comment->delete();
+
+      return redirect('/posts/' . $comment->post->id);
+    }
+     protected function validData() {
         
         return request()->validate([
          'description' => ['required', 'min:4','max:50']
         ]);
         
     }
-    
 
 }
