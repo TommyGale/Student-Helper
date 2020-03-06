@@ -6,6 +6,12 @@ Create Post
 
 @endsection
 
+@section('head')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
+
+@endsection
+
 @section('headLinks')
 
 <a href="/">Home</a>

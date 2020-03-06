@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
+	use Likable;
+	
     protected $guarded = [];
 
      protected $dispatchesEvents = [
@@ -30,6 +33,12 @@ class Post extends Model
        $this->comments()->create($comment);
        
    }
+
+   public function postIsLiked(){
+
+    return $this->likes()->where('user_id', auth()->id())->exists();
+
+}
 
    // public function getRouteKeyName()
    // {

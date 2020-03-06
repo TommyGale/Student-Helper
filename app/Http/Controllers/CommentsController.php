@@ -34,6 +34,12 @@ class CommentsController extends Controller
 
     public function edit(Post $post, Comment $comment)
     {
+
+    	if($comment->user_id !== auth()->id()){
+            
+          return redirect()->back();
+        }
+
         return view ('comments.edit', compact('comment')); 
     }
     

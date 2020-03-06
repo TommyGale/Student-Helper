@@ -7,6 +7,7 @@
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>@yield('title','Student Helper')</title>
         <!-- Bootstrap CSS -->
+        @yield('head')
         <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('vendors/linericon/style.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.min.css') }}">
@@ -17,7 +18,7 @@
         <!-- main css -->
         <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
+
     </head>
     <body class="about_page">
 
