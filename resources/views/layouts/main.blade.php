@@ -45,10 +45,13 @@
                  aria-expanded="false">Forums</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="/posts">All Posts</a></li>
+                  @if(auth()->check())
+                  <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
+                  @endif
                 </ul>
 
                 </li>
-                
+
               <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
             </ul>
             @guest

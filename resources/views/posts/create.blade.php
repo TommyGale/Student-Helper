@@ -35,6 +35,21 @@ Create Post
 
 		<form method ="POST" action = "/posts">
 			@csrf
+
+			<div class = "field">
+				<label class="label" for="channel_id">Choose a Category</label>
+
+				<div class= "control">
+
+					<select name="channel_id" id="channel_id" class="form-control">
+						<option value="">Choose a Category</option>
+						@foreach (App\Channel::all() as $channel)
+						<option value ="{{ $channel->id }}">{{ $channel->name }}</option>
+						@endforeach
+					</select>
+				
+				</div>
+
 			<div class = "field">
 				<label class="label" for="title">Title</label>
 

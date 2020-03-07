@@ -41,7 +41,7 @@ class PostsController extends Controller
     public function store(Post $post)
     {
         
-        auth()->user()->posts()->channel()->create($attributes= $this->validData());
+        auth()->user()->posts()->create($attributes= $this->validData());
 
         return redirect('/posts');
     }
@@ -84,7 +84,7 @@ class PostsController extends Controller
         return request()->validate([
          'title' => ['required', 'min:4','max:50'],
         'description' => ['required', 'min:10','max:255'], 
-        'channel_id' => ['required|exists:channels,id']       
+        'channel_id' => 'required|exists:channels,id'       
         ]);
 
     }
