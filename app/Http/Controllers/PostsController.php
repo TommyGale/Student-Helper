@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Channel;
 use App\Events\PostCreated;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,17 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index','show']);
     }
     
-    public function index()
+    public function index(Channel $channel)
     {
+       
+       if($channel->exists) {
+        $posts = $channel->posts()->latest()->get();
+       } else {
+
         $posts = Post::latest()->get();
+       }
+
+       
 
         return view('posts.index' , compact('posts'));
     }
@@ -32,13 +41,13 @@ class PostsController extends Controller
     public function store(Post $post)
     {
         
-        auth()->user()->posts()->create($attributes= $this->validData());
+        auth()->user()->posts()->channel()->create($attributes= $this->validData());
 
         return redirect('/posts');
     }
 
     
-    public function show(Post $post)
+    public function show($channelID , Post $post)
     {
 
         return view('posts.show' , compact('post'));
@@ -74,7 +83,8 @@ class PostsController extends Controller
 
         return request()->validate([
          'title' => ['required', 'min:4','max:50'],
-        'description' => ['required', 'min:10','max:255']        
+        'description' => ['required', 'min:10','max:255'], 
+        'channel_id' => ['required|exists:channels,id']       
         ]);
 
     }

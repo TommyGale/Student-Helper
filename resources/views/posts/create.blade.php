@@ -28,9 +28,10 @@ Create Post
 @section('content')
 
 <div id="wrapper">
+	<div class="box">
 	<div id="page" class="container">
 		
-		<h1 class="heading has-text-weight-bold is-size-4">New Post</h1>
+		<h1 class="heading has-text-weight-bold is-size-4">Create a New Post</h1>
 
 		<form method ="POST" action = "/posts">
 			@csrf
@@ -60,7 +61,7 @@ Create Post
 
 					<div class="field is-grouped">
 						<div class="control">
-							<button class ="button is-link" type="submit">Submit</button>
+							<button class ="button is-link" type="submit">Pulish Post</button>
 						</div>
 					</div>
 
@@ -70,6 +71,7 @@ Create Post
 			</div>
 
 		</div>
+	</div>
 
 
 @endsection

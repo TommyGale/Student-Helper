@@ -5,6 +5,7 @@
 use App\User;
 use App\Post;
 use App\Comment;
+use App\Channel;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -36,8 +37,21 @@ $factory->define(Post::class, function (Faker $faker){
 		'user_id' => function () {
 			return factory('App\User')->create()->id;
 		},
+		'channel_id' => function () {
+			return factory('App\Channel')->create()->id;
+		},
 		'title' => $faker->sentence,
 		'description' => $faker->paragraph
+	];
+});
+
+$factory->define(Channel::class, function (Faker $faker){
+
+	$name = $faker->word;
+
+	return [
+		'name' => $name,
+		'slug'	=> $name
 	];
 });
 

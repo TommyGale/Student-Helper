@@ -56,7 +56,7 @@ Posts
                                 <p class="excert">
                                     {{ $post->description}}
                                 </p>
-                                
+                                @if(auth()->check())
                                 @if($post->postIsLiked())
                                         <form method="POST" action ="/posts/{{$post->id}}/unlike">
                                         @method('DELETE')
@@ -73,6 +73,7 @@ Posts
                                         <button class ="button is-link lnr lnr-thumbs-up" type="submit" {{ $post->postIsLiked() ? 'disabled' : '' }} >Like</button>
                                         </form>
 
+                                        @endif
                                         @endif
                             </div>
                             
@@ -106,14 +107,12 @@ Posts
                             </div>
                         </div>
 
-                        <div class="comment-form">
-                            <h4>Leave a Comment</h4>
-                            
-							 <form method="POST" action="/posts/{{ $post->id}}/comments">
+                        @if(auth()->check())
+                        <div class="comment-form">  
+							 <form method="POST" action="{{ $post->path() . '/comments'}}">
                                  @csrf
                             <div class= "control">
-                     <label class="label" for="description">Comment</label>
-                    <textarea class="textarea @error('description') is-danger @enderror" name="description" id="description" required>{{ old('description')}}</textarea>
+                    <textarea class="textarea @error('description') is-danger @enderror" placeholder="Comment your thoughts..." name="description" id="description" required>{{ old('description')}}</textarea>
 
                     @error('description')
                         <p class="help is-danger">{{ $errors->first('description')}}</p>
@@ -124,58 +123,24 @@ Posts
 
                 <div class="field is-grouped">
                         <div class="control">
-                            <button class ="button is-link" type="submit">Submit</button>
+                            <button class ="button is-link" type="submit">Publish Comment</button>
                         </div>
                     </div>
                             </form>
 
                             
                         </div>
+                        @else
+                            <p class="text-center">Please <a href="{{ route('login') }}">sign in</a> to comment on this post.</p>
+                        @endif
 
                         <div class="comments-area">
                             <h4>{{$post->comments->count()}} Comments</h4>
                             <div class="comment-list">
                             	@foreach ($post->comments as $comment)
-                            	<br>
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                    	<div class="box">
-                                        <div class="desc">
-                                            <h5><a href="#">{{ $comment->user->name }}</a></h5>
-                                            <p class="date">{{ $comment->created_at->diffForHumans()}}</p>
-                                            <p class="lnr lnr-thumbs-up"> {{$comment->likes->count()}}</p>
-                                            <p class="comment">
-                                                {{ $comment->description}}
-                                            </p>
-                                            <br>
-                                            @if($comment->commentIsLiked())
-                                        <form method="POST" action ="/comments/{{$comment->id}}/unlike">
-                                        @method('DELETE')
-                                        @csrf
-                                        
-                                        <button class ="button is-link lnr lnr-thumbs-down" type="submit">Unlike</button>
-                                        </form>
-                                        @else
 
-                                        <form method="POST" action ="/comments/{{$comment->id}}/like">
-                           
-                                        @csrf
-                                        
-                                        <button class ="button is-link lnr lnr-thumbs-up" type="submit" {{ $comment->commentIsLiked() ? 'disabled' : '' }} >Like</button>
-                                        </form>
+                            	@include('comments.comment')
 
-                                        @endif
-                                        </div>
-                                    </div>
-                                    <div class="reply-btn">
-                                        
-                                           @can('update', $comment)
-                                        <a href="/posts/{{ $post->id}}/comments/{{ $comment->id}}/edit" class="btn-reply text-uppercase">Edit Comment</a>
-                                         @endcan
-                                    </div>
-                                </div>
-                                <br>
-                            </div>
                                 @endforeach
                             </div>
 

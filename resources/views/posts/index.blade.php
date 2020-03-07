@@ -44,6 +44,7 @@ Posts
 
 <section class="blog_categorie_area">
             <div class="container">
+
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="categories_post">
@@ -97,7 +98,7 @@ Posts
                                <div class="col-md-3">
                                    <div class="blog_info text-right">
                                         <div class="post_tag">
-                                            TAGS SPLIT EACH PAGE WITH LIMITS OF 10
+                                            {{ $post->channel->slug}}
                                         </div>
                                         <ul class="blog_meta list">
                                             <li><a href="#">{{ $post->user->name}}<i class="lnr lnr-user"></i></a></li>
@@ -112,11 +113,11 @@ Posts
                                     <div class="blog_post">
                                         <img src="img/blog/main-blog/m-blog-1.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="single-blog.html"><h2>{{ $post->title }}</h2></a>
+                                            <a href="{{ $post->path()}}"><h2>{{ $post->title }}</h2></a>
                                             <p>{{ $post->description}}</p>
-                                            <a href="/posts/{{ $post->id}}" class="blog_btn">View More</a>
+                                            <a href="{{ $post->path()}}" class="blog_btn">View More</a>
                                             @can('update', $post)
-                                            <a href="/posts/{{ $post->id}}/edit" class="blog_btn">Update Post</a>
+                                            <a href="{{ $post->path()}}/edit" class="blog_btn">Update Post</a>
                                             @endcan
                                         </div>
                                     </div>
@@ -209,50 +210,16 @@ Posts
                                 <div class="br"></div>
                             </aside>
                             <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Post Catgories</h4>
+                                <h4 class="widget_title">Post Categories</h4>
                                 <ul class="list cat-list">
+                                  @foreach(App\Channel::all() as $channel)
                                     <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Technology</p>
-                                            <p>37</p>
+                                        <a href="/posts/{{ $channel->slug }}" class="d-flex justify-content-between">
+                                            <p>{{ $channel->name }}</p>
+                                            <p>{{ $channel->posts->count()}}</p>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Lifestyle</p>
-                                            <p>24</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Fashion</p>
-                                            <p>59</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Art</p>
-                                            <p>29</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Food</p>
-                                            <p>15</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Architecture</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Adventure</p>
-                                            <p>44</p>
-                                        </a>
-                                    </li>                             
+                                    @endforeach                  
                                 </ul>
                                 <div class="br"></div>
                             </aside>

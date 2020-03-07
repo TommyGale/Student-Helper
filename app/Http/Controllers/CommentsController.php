@@ -10,7 +10,7 @@ class CommentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['']);
+        $this->middleware('auth')->except(['index','show']);
     }
 
      public function update(Comment $comment , Post $post)
@@ -21,7 +21,7 @@ class CommentsController extends Controller
     }
     
     
- public function store(Post $post) {
+ public function store($channelID, Post $post) {
 
  		$attributes = $this->validData();
         
