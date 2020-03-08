@@ -6,6 +6,12 @@ Edit Comment
 
 @endsection
 
+@section('head')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
+
+@endsection
+
 @section('headLinks')
 
 <a href="/">Home</a>
@@ -35,7 +41,7 @@ Edit Comment
 					<label class="label" for="description">Description</label>
 
 					<div class="contorl">
-						<textarea class="textarea" name="description" id="description">{{ $comment->description }}</textarea>
+						<textarea class="textarea" name="description" id="description" required>{{ $comment->description }}</textarea>
 					</div>
 					</div>
 
@@ -65,7 +71,8 @@ Edit Comment
 
 </div>
 </form>
-
+<br>
+@include('errors.errors')
 <br>
 
 			</div>

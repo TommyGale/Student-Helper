@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\PostFilters;
 use App\Post;
 use App\Channel;
 use App\Events\PostCreated;
@@ -16,17 +17,17 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index','show']);
     }
     
-    public function index(Channel $channel)
+    public function index(Channel $channel , PostFilters $filters)
     {
-       
-       if($channel->exists) {
-        $posts = $channel->posts()->latest()->get();
+        if($channel->exists) {
+        $posts = $channel->posts()->latest();
        } else {
 
-        $posts = Post::latest()->get();
+        $posts = Post::latest();
        }
 
-       
+
+        $posts = $posts->filter($filters)->get();
 
         return view('posts.index' , compact('posts'));
     }
@@ -54,7 +55,7 @@ class PostsController extends Controller
     }
 
    
-    public function edit(Post $post)
+    public function edit($channelID, Post $post)
     {
 
     if($post->user_id !== auth()->id()){

@@ -61,6 +61,9 @@
                  aria-expanded="false">Account</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="">My Profile</a></li>
+                  @if(auth()->check())
+                  <li class="nav-item"><a class="nav-link" href="/posts?by={{ auth()->user()->name }}">My Posts</a></li>
+                  @endif
                   <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">Logout</a>
 

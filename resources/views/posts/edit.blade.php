@@ -38,10 +38,24 @@ Edit Post
 			@method('PUT')
 
 			<div class = "field">
+				<label class="label" for="channel_id">Choose a Category</label>
+
+				<div class= "control">
+
+					<select name="channel_id" id="channel_id" class="form-control">
+						<option value="">{{ $post->channel->name }}</option>
+						@foreach (App\Channel::all() as $channel)
+						<option value ="{{ $channel->id }}">{{ $channel->name }}</option>
+						@endforeach
+					</select>
+				
+				</div>
+
+			<div class = "field">
 				<label class="label" for="title">Title</label>
 
 				<div class= "control">
-					<input class="input" type="text" name="title" id="title" value="{{ $post->title }}">
+					<input class="input" type="text" name="title" id="title" value="{{ $post->title }}" required>
 				</div> 
 				</div>
 
@@ -49,7 +63,7 @@ Edit Post
 					<label class="label" for="description">Description</label>
 
 					<div class="contorl">
-						<textarea class="textarea" name="description" id="description">{{ $post->description }}</textarea>
+						<textarea class="textarea" name="description" id="description" required>{{ $post->description }}</textarea>
 					</div>
 					</div>
 
@@ -74,17 +88,18 @@ Edit Post
 						</div>
 					</div>
 
+					<br>
+@include('errors.errors')
+<br>
+
             </div>
         </div>
 
 </div>
 </form>
 
-<br>
 
-			</div>
 
-		</div>
 
 
 @endsection

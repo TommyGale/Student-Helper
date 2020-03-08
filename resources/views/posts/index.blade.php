@@ -212,7 +212,7 @@ Posts
                             <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title">Post Categories</h4>
                                 <ul class="list cat-list">
-                                  @foreach(App\Channel::all() as $channel)
+                                  @foreach($channels as $channel)
                                     <li>
                                         <a href="/posts/{{ $channel->slug }}" class="d-flex justify-content-between">
                                             <p>{{ $channel->name }}</p>

@@ -41,10 +41,10 @@ Create Post
 
 				<div class= "control">
 
-					<select name="channel_id" id="channel_id" class="form-control">
+					<select name="channel_id" id="channel_id" class="form-control" required>
 						<option value="">Choose a Category</option>
-						@foreach (App\Channel::all() as $channel)
-						<option value ="{{ $channel->id }}">{{ $channel->name }}</option>
+						@foreach ($channels as $channel)
+						<option value ="{{ $channel->id }}" {{ old('channel_id') == $channel->id ? 'selected' : '' }}>{{ $channel->name }}</option>
 						@endforeach
 					</select>
 				
@@ -54,11 +54,8 @@ Create Post
 				<label class="label" for="title">Title</label>
 
 				<div class= "control">
-					<input class="input @error('title') is-danger @enderror" type="text" name="title" id="title" value ="{{ old('title')}}" required>
+					<input class="input" type="text" name="title" id="title" value ="{{ old('title')}}" required>
 
-					@error('title')
-						<p class="help is-danger">{{ $errors->first('title')}}</p>
-					@enderror
 				</div> 
 				</div>
 
@@ -66,11 +63,8 @@ Create Post
 					<label class="label" for="description">Description</label>
 
 					<div class="contorl">
-						<textarea class="textarea @error('description') is-danger @enderror" name="description" id="description" required>{{ old('description')}}</textarea>
+						<textarea class="textarea" name="description" id="description" required>{{ old('description')}}</textarea>
 
-					@error('description')
-						<p class="help is-danger">{{ $errors->first('description')}}</p>
-					@enderror
 					</div>
 					</div>
 
@@ -80,8 +74,8 @@ Create Post
 						</div>
 					</div>
 
-					
 				</form>
+				@include('errors.errors')
 
 			</div>
 

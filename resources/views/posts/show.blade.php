@@ -112,11 +112,8 @@ Posts
 							 <form method="POST" action="{{ $post->path() . '/comments'}}">
                                  @csrf
                             <div class= "control">
-                    <textarea class="textarea @error('description') is-danger @enderror" placeholder="Comment your thoughts..." name="description" id="description" required>{{ old('description')}}</textarea>
+                    <textarea class="textarea" placeholder="Comment your thoughts..." name="description" id="description" required>{{ old('description')}}</textarea>
 
-                    @error('description')
-                        <p class="help is-danger">{{ $errors->first('description')}}</p>
-                    @enderror
                 </div> 
 
                 <br>
@@ -128,6 +125,9 @@ Posts
                     </div>
                             </form>
 
+                            <br>
+
+                            @include('errors.errors')
                             
                         </div>
                         @else

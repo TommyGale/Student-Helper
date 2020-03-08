@@ -3,6 +3,7 @@
 namespace App;
 
 use Auth;
+use App\Filters\PostFilters;
 use App\Events\PostCreated;
 use Illuminate\Database\Eloquent\Model;
 
@@ -48,6 +49,12 @@ class Post extends Model
   public function channel() {
 
     return $this->belongsTo(Channel::class);
+  }
+
+  public function scopeFilter($query, $filters) 
+  {
+
+    return $filters->apply($query);
   }
 
    // public function getRouteKeyName()
