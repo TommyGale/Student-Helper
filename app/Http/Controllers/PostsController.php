@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Channel;
 use App\Filters\PostFilters;
 use App\Post;
-use App\Channel;
 use App\Events\PostCreated;
 use Illuminate\Http\Request;
 
@@ -19,15 +20,8 @@ class PostsController extends Controller
     
     public function index(Channel $channel , PostFilters $filters)
     {
-        if($channel->exists) {
-        $posts = $channel->posts()->latest();
-       } else {
 
-        $posts = Post::latest();
-       }
-
-
-        $posts = $posts->filter($filters)->get();
+        $posts = $this->getPosts($channel, $filters);
 
         return view('posts.index' , compact('posts'));
     }
@@ -88,6 +82,17 @@ class PostsController extends Controller
         'channel_id' => 'required|exists:channels,id'       
         ]);
 
+    }
+
+    protected function getPosts(Channel $channel, PostFilters $filters)
+    {
+        $posts = Post::latest()->filter($filters);
+
+        if ($channel->exists) {
+            $posts->where('channel_id', $channel->id);
+        }
+
+        return $posts->get();
     }
 
     }

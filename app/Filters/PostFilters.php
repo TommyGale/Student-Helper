@@ -1,36 +1,18 @@
-<?php 
+<?php
 
 namespace App\Filters;
 
 use App\User;
-use Illuminate\Http\Request;
 
-Class PostFilters
-
+class PostFilters extends Filters
 {
+    
+    protected $filters = ['by'];
 
-	protected $request;
-	protected $builder;
+    protected function by($username)
+    {
+        $user = User::where('name', $username)->firstOrFail();
 
-	public function __contruct(Request $request)
-	{
-		$this->request = $request;
-	}
-
-	public function apply($builder)
-	{
-		if (! $username  = $this->request->by) return $builder;
-
-		return $this->by($builder , $username);
-
-	}
-
-	protected function by($builder $username)
-	{
-
-		$user = User::where('name' , $username)->firstOrFail();
-
-		return $bulder->where('user_id' , $user->id);
-	}
-
+        return $this->builder->where('user_id', $user->id);
+    }
 }

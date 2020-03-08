@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Auth;
 use App\Filters\PostFilters;
+use Auth;
 use App\Events\PostCreated;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
