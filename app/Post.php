@@ -15,6 +15,8 @@ class Post extends Model
 	
     protected $guarded = [];
 
+    protected $with = ['user' , 'channel'];
+
      protected static function boot()
     {
         parent::boot();
@@ -45,11 +47,6 @@ class Post extends Model
        
    }
 
-   public function postIsLiked(){
-
-    return $this->likes()->where('user_id', auth()->id())->exists();
-
-}
 
   public function path()
   {

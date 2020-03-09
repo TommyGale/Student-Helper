@@ -47,7 +47,7 @@ Posts
                                         <li><a href="#">{{ $post->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
                                         <li><a href="#">{{ $post->updated_at->diffForHumans()}}<i class="lnr lnr-pencil"></i></a></li>
                                         <li><a href="#">{{$post->comments_count }}<i class="lnr lnr-bubble"></i></a></li>
-                                        <li><a href="#">{{$post->likes->count()}}<i class="lnr lnr-thumbs-up"></i></a></li>
+                                        <li><a href="#">{{$post->like_count}}<i class="lnr lnr-thumbs-up"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

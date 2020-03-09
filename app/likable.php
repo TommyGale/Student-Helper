@@ -17,6 +17,23 @@ trait Likable {
        return $this->morphToMany(User::class, 'likable')->withTimestamps();
    }
 
+   public function postIsLiked(){
+
+    return $this->likes()->where('user_id', auth()->id())->exists();
+
+}
+
+public function commentIsLiked(){
+
+    return $this->likes()->where('user_id', auth()->id())->count();
+
+}
+
+   public function getLikeCountAttribute() {
+
+    return $this->likes->count();
+  }
+
 }
 
 
