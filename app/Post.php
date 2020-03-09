@@ -15,6 +15,15 @@ class Post extends Model
 	
     protected $guarded = [];
 
+     protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('commentCount', function ($builder) {
+            $builder->withCount('comments');
+        });
+    }
+
      protected $dispatchesEvents = [
       
       'created' => PostCreated::class ];

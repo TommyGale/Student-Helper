@@ -48,6 +48,7 @@
                   @if(auth()->check())
                   <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
                   @endif
+                  <li class="nav-item"><a class="nav-link" href="/posts?popular=1">Popular Posts</a></li>
                 </ul>
 
                 </li>

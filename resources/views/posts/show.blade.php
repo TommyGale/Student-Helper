@@ -46,7 +46,7 @@ Posts
                                         <li><a href="#">{{ $post->user->name}}<i class="lnr lnr-user"></i></a></li>
                                         <li><a href="#">{{ $post->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
                                         <li><a href="#">{{ $post->updated_at->diffForHumans()}}<i class="lnr lnr-pencil"></i></a></li>
-                                        <li><a href="#">{{$post->comments->count()}}<i class="lnr lnr-bubble"></i></a></li>
+                                        <li><a href="#">{{$post->comments_count }}<i class="lnr lnr-bubble"></i></a></li>
                                         <li><a href="#">{{$post->likes->count()}}<i class="lnr lnr-thumbs-up"></i></a></li>
                                     </ul>
                                 </div>
@@ -135,16 +135,18 @@ Posts
                         @endif
 
                         <div class="comments-area">
-                            <h4>{{$post->comments->count()}} Comments</h4>
+                            <h4>{{$post->comments_count}} {{ Str::plural('comment', $post->comments_count) }}</h4>
                             <div class="comment-list">
-                            	@foreach ($post->comments as $comment)
+                            	@foreach ($comments as $comment)
 
                             	@include('comments.comment')
 
                                 @endforeach
                             </div>
-
+                            {{ $comments->links()}}
                         </div>
+
+
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">

@@ -45,7 +45,8 @@ class PostsController extends Controller
     public function show($channelID , Post $post)
     {
 
-        return view('posts.show' , compact('post'));
+        return view('posts.show' , [ 'post' => $post,
+                                     'comments' => $post->comments()->paginate(10)]);
     }
 
    
@@ -84,15 +85,15 @@ class PostsController extends Controller
 
     }
 
-    protected function getPosts(Channel $channel, PostFilters $filters)
-    {
-        $posts = Post::latest()->filter($filters);
+    public function getPosts(Channel $channel, PostFilters $filters)
+{
+        $posts = Post::filter($filters); 
 
-        if ($channel->exists) {
-            $posts->where('channel_id', $channel->id);
+        if ($channel->exists) { 
+        $posts->where('channel_id', $channel->id); 
         }
 
-        return $posts->get();
-    }
+        return $posts->latest()->get();
+}
 
     }

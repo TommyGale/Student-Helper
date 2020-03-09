@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 use Illuminate\Http\Request;
 
@@ -24,11 +24,11 @@ Route::get('/posts/{channel}/{post}' , 'PostsController@show');
 
 Route::post('/posts' , 'PostsController@store');
 
+Route::get('/posts/{channel}' , 'PostsController@index');
+
 Route::put('/posts/{post}', 'PostsController@update');
 
 Route::get('/posts/{channel}/{post}/edit', 'PostsController@edit');
-
-Route::get('/posts/{channel}' , 'PostsController@index');
 
 
 
