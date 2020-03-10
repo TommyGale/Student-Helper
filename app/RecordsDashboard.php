@@ -15,6 +15,11 @@ trait RecordsDashboard
                 $model->recordDashboard($event);
             });
         }
+
+        static::deleting( function ($model){
+
+            $model->dashboard()->delete();
+        });
     }
 
     

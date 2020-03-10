@@ -38,7 +38,7 @@ class PostsController extends Controller
         
         auth()->user()->posts()->create($attributes= $this->validData());
 
-        return redirect('/posts');
+        return redirect('/posts')->with('flash' , 'Your post has been published.');
     }
 
     

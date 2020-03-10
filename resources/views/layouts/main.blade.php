@@ -108,6 +108,8 @@
 
 			@yield('content')
 
+			<flash message="{{ session('flash') }}"></flash>
+
 		</section>
 		
 	

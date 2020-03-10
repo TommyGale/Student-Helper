@@ -52,4 +52,9 @@ class User extends Authenticatable
 
         return 'name';
     }
+
+    public function dashboard() {
+
+        return $this->hasMany(Dashboard::class);
+    }
 }
