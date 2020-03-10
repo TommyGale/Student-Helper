@@ -40,14 +40,14 @@ Posts
                             <div class="col-lg-3  col-md-3">
                                 <div class="blog_info text-right">
                                     <div class="post_tag">
-                                        TAGS
+                                        {{ $post->channel->slug}}
                                     </div>
                                     <ul class="blog_meta list">
-                                        <li><a href="#">{{ $post->user->name}}<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">{{ $post->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">{{ $post->updated_at->diffForHumans()}}<i class="lnr lnr-pencil"></i></a></li>
-                                        <li><a href="#">{{$post->comments_count }}<i class="lnr lnr-bubble"></i></a></li>
-                                        <li><a href="#">{{$post->like_count}}<i class="lnr lnr-thumbs-up"></i></a></li>
+                                        <li><a href="{{ route('profile' , $post->user)}}">{{ $post->user->name}}<i class="lnr lnr-user"></i></a></li>
+                                        <li><a href="{{$post->path()}}">{{ $post->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
+                                        <li><a href="{{$post->path()}}">{{ $post->updated_at->diffForHumans()}}<i class="lnr lnr-pencil"></i></a></li>
+                                        <li><a href="{{$post->path()}}">{{$post->comments_count }}<i class="lnr lnr-bubble"></i></a></li>
+                                        <li><a href="{{$post->path()}}">{{$post->like_count}}<i class="lnr lnr-thumbs-up"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -75,7 +75,12 @@ Posts
 
                                         @endif
                                         @endif
+
                             </div>
+
+                            @can('update', $post)
+                                            <a href="{{ $post->path()}}/edit" class="blog_btn">Update Post</a>
+                                            @endcan
                             
                         </div>
                         <div class="navigation-area">

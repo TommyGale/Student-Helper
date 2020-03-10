@@ -77,7 +77,7 @@ Edit Post
 
 				<br>
 
-				<form method="POST" action="/posts/{{ $post->id}}">
+				<form method="POST" action="{{ $post->path() }}">
 
         		@csrf
 				@method('DELETE')

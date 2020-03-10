@@ -42,7 +42,7 @@ class PostsController extends Controller
     }
 
     
-    public function show($channelID , Post $post)
+    public function show($channel , Post $post)
     {
 
         return view('posts.show' , [ 'post' => $post,
@@ -50,7 +50,7 @@ class PostsController extends Controller
     }
 
    
-    public function edit($channelID, Post $post)
+    public function edit($channel, Post $post)
     {
 
     if($post->user_id !== auth()->id()){
@@ -61,19 +61,23 @@ class PostsController extends Controller
        return view ('posts.edit', compact('post')); 
     }
 
-    public function update(Post $post)
+    public function update($channel,Post $post)
     {
          $post->update($this->validData());
 
         return redirect('/posts/' . $post->id);
     }
 
-    public function destroy(Post $post)
+    public function destroy($channel,Post $post)
     {
+      //$post->comments()->delete();
+      //$post->likes()->delete();
       $post->delete();
 
       return redirect('/posts');
     }
+
+
 
     protected function validData() {
 

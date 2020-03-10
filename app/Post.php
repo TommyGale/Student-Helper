@@ -12,6 +12,7 @@ class Post extends Model
 {
 
 	use Likable;
+  use RecordsDashboard;
 	
     protected $guarded = [];
 
@@ -24,6 +25,13 @@ class Post extends Model
         static::addGlobalScope('commentCount', function ($builder) {
             $builder->withCount('comments');
         });
+
+        static::deleting(function ($post) {
+
+          $post->comments()->delete();
+          $post->likes()->delete();
+        });
+
     }
 
      protected $dispatchesEvents = [

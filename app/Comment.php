@@ -9,10 +9,22 @@ class Comment extends Model
 {
 
 	use Likable;
+  use RecordsDashboard;
 	
     protected $guarded = [];
 
     protected $with = ['user' , 'likes'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($comment) {
+
+          $comment->delete();
+          $likes->delete();
+        });
+    }
     
     public function post(){
         

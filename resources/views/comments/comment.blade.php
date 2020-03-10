@@ -3,7 +3,7 @@
                                     <div class="user justify-content-between d-flex">
                                         <div class="box">
                                         <div class="desc">
-                                            <h5><a href="#">{{ $comment->user->name }}</a> posted: {{ $comment->created_at->diffForHumans()}}</h5>
+                                            <h5><a href="{{ route('profile' , $comment->user)}}">{{ $comment->user->name }}</a> posted: {{ $comment->created_at->diffForHumans()}}</h5>
                                             <p class="lnr lnr-thumbs-up"> {{$comment->like_count }}</p>
                                             <p class="comment">
                                                 {{ $comment->description}}

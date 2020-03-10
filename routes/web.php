@@ -30,6 +30,8 @@ Route::put('/posts/{post}', 'PostsController@update');
 
 Route::get('/posts/{channel}/{post}/edit', 'PostsController@edit');
 
+Route::delete('/posts/{channel}/{post}', 'PostsController@destroy');
+
 
 
 Route::post('/posts/{channel}/{post}/comments' , 'CommentsController@store');
@@ -50,6 +52,8 @@ Route::delete('/posts/{post}/unlike', 'LikeController@postUnliked');
 Route::post('/comments/{comment}/like' , 'LikeController@commentLiked');
 
 Route::delete('/comments/{comment}/unlike', 'LikeController@commentUnliked');
+
+Route::get('/profiles/{user}' , 'ProfilesController@show')->name('profile');
 
 
 

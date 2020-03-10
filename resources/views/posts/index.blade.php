@@ -93,7 +93,7 @@ Posts
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="blog_left_sidebar">
-                          @foreach($posts as $post)
+                          @forelse($posts as $post)
                             <article class="row blog_item">
                                <div class="col-md-3">
                                    <div class="blog_info text-right">
@@ -101,11 +101,11 @@ Posts
                                             {{ $post->channel->slug}}
                                         </div>
                                         <ul class="blog_meta list">
-                                            <li><a href="#">{{ $post->user->name}}<i class="lnr lnr-user"></i></a></li>
-                                            <li><a href="#">{{ $post->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">{{ $post->updated_at->diffForHumans()}}<i class="lnr lnr-pencil"></i></a></li>
-                                            <li><a href="#">{{$post->comments_count }}<i class="lnr lnr-bubble"></i></a></li>
-                                            <li><a href="#">{{$post->likes->count()}}<i class="lnr lnr-thumbs-up"></i></a></li>
+                                            <li><a href="{{ route('profile' , $post->user)}}">{{ $post->user->name}}<i class="lnr lnr-user"></i></a></li>
+                                            <li><a href="{{$post->path()}}">{{ $post->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
+                                            <li><a href="{{$post->path()}}">{{ $post->updated_at->diffForHumans()}}<i class="lnr lnr-pencil"></i></a></li>
+                                            <li><a href="{{$post->path()}}">{{$post->comments_count }}<i class="lnr lnr-bubble"></i></a></li>
+                                            <li><a href="{{$post->path()}}">{{$post->likes->count()}}<i class="lnr lnr-thumbs-up"></i></a></li>
                                         </ul>
                                     </div>
                                </div>
@@ -123,7 +123,10 @@ Posts
                                     </div>
                                 </div>
                             </article>
-                            @endforeach
+
+                            @empty
+                            <p>There are no results for the channel at this time</p>
+                            @endforelse
                             <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
