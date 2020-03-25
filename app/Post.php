@@ -58,6 +58,7 @@ class Post extends Model
 
   public function path()
   {
+    
     return "/posts/{$this->channel->slug}/{$this->id}";
   }
 

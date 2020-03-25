@@ -14,6 +14,12 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/chats' , 'ChatsController@index');
+
+Route::get('/message/{id}' , 'ChatsController@getMessage')->name('message');
+
+Route::post('message' , 'ChatsController@sendMessage');
+
 //Route::resource('posts' , 'PostsController');
 
 Route::get('/posts' , 'PostsController@index');

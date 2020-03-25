@@ -29,7 +29,7 @@ class CommentsController extends Controller
      
         $post->addComment($attributes);
                    
-        return back()->with('flash' , 'Your Comment has been published.');
+        return back();
     }
 
     public function edit(Post $post, Comment $comment)

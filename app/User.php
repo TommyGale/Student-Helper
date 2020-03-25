@@ -16,8 +16,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    
+    //put avatar in the fillable filed when implemented
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','email', 'password',
     ];
 
     /**

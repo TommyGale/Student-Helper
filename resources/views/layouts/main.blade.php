@@ -4,6 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>@yield('title','Student Helper')</title>
         <!-- Bootstrap CSS -->
@@ -18,6 +19,8 @@
         <!-- main css -->
         <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
+
+
 
     </head>
     <body class="about_page">
@@ -38,17 +41,26 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-center">
-              <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                  aria-expanded="false">Forums</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="/posts">All Posts</a></li>
-                  @if(auth()->check())
-                  <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
+                	@if(auth()->check())
+                	<li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/posts?by={{ auth()->user()->name }}">My Posts</a></li>
                   @endif
+                  <li class="nav-item"><a class="nav-link" href="/posts">All Posts</a></li>
                   <li class="nav-item"><a class="nav-link" href="/posts?popular=1">Popular Posts</a></li>
+                </ul>
+
+                </li>
+                <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">Event Planner</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="">All Events</a></li>
                 </ul>
 
                 </li>
@@ -66,9 +78,7 @@
                  aria-expanded="false">Account</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="{{ route('profile' , auth()->user()) }}">My Profile</a></li>
-                 @if(auth()->check())
-                  <li class="nav-item"><a class="nav-link" href="/posts?by={{ auth()->user()->name }}">My Posts</a></li>
-                  @endif
+                  <li class="nav-item"><a class="nav-link" href="#">My Messages</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">Logout</a>
 
@@ -108,8 +118,6 @@
 
 			@yield('content')
 
-			<flash message="{{ session('flash') }}"></flash>
-
 		</section>
 		
 	
@@ -133,6 +141,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="{{ asset('js/app.js') }}"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -150,5 +159,105 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 		<script src="js/gmaps.min.js"></script>
 		<script src="js/theme.js"></script>
+		<script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script> var receiver_id = '';
+			     var my_id = "{{ Auth::id() }}";
+			 	 $(document).ready(function (){
+
+			 	 	$.ajaxSetup({
+			 	 		headers: {
+			 	 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			 	 		}
+			 	 	});
+
+			 	 	// Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('668b2ace96dab23960cc', {
+      cluster: 'eu',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      //alert(JSON.stringify(data));
+
+      if(my_id == data.from) {
+      	$('#' + data.to).click();
+      }else if( my_id == data.to) {
+      	if(receiver_id == data.from) {
+      		$('#' + data.from).click();
+      	} else {
+      		var pending = parseInt ($('#' + data.from).find('.pending').html());	
+
+      		if(pending) {
+
+      			$('#' + data.from).find('.pending').html (pending + 1);
+      		} else {
+      			$('#' + data.from).append('<span class="pending">1</span>');
+      		}
+
+      	}
+      }
+    });
+			 	 	
+
+			 	 	$('.user').click(function (){
+			 	 	$('.user').removeClass('active');
+			 	 	$(this).addClass('active');
+			 	 	$(this).find('.pending').remove();
+
+			 	 	receiver_id = $(this).attr('id');
+			 	 	$.ajax({
+			 	 		type: "get",
+			 	 		url: "message/" + receiver_id,
+			 	 		data: "",
+			 	 		cache: false,
+			 	 		success: function(data) {
+			 	 			$('#messages').html(data);
+			 	 			scrollToBottomFunc();
+			 	 		}
+			 	 	});
+
+			 	 });
+
+
+
+			 	 	$(document).on('keyup', '.input-text input', function (e) {
+
+			 	 		var message = $(this).val();
+
+			 	 		if(e.keyCode == 13 && message != '' && receiver_id != '') {
+			 	 			$(this).val('');
+
+			 	 			var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+			 	 			$.ajax({
+			 	 				type: "post",
+			 	 				url: "message",
+			 	 				data: datastr,
+			 	 				cache: false,
+			 	 				success: function(data) {
+
+			 	 				},
+			 	 				error: function (jqXHR, status, err) {
+
+			 	 				},
+			 	 				complete: function () {
+			 	 					scrollToBottomFunc();
+			 	 				}
+			 	 			})
+			 	 		}
+			 	 	});
+
+			 	 });
+
+			 	 function scrollToBottomFunc() {
+			 	 	$('.message-wrapper').animate({
+			 	 		scrollTop: $('.message-wrapper').get(0).scrollHeight }, 50);
+			 	 	
+			 	 }
+
+			 	</script>
 	</body>
 </html>

@@ -39,15 +39,29 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-center">
-              <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                  aria-expanded="false">Forums</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li>
+                  @if(auth()->check())
+                  <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/posts?by={{ auth()->user()->name }}">My Posts</a></li>
+                  @endif
+                  <li class="nav-item"><a class="nav-link" href="/posts">All Posts</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/posts?popular=1">Popular Posts</a></li>
                 </ul>
-              </li>
+
+                </li>
+                <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">Event Planner</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="">All Events</a></li>
+                </ul>
+
+                </li>
               <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
             </ul>
             @guest
@@ -61,9 +75,6 @@
                  aria-expanded="false">Account</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="">My Profile</a></li>
-                  @if(auth()->check())
-                  <li class="nav-item"><a class="nav-link" href="/posts?by={{ auth()->user()->name }}">My Posts</a></li>
-                  @endif
                   <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">Logout</a>
 
