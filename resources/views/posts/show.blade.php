@@ -94,13 +94,13 @@ Posts
                                     </div>
                                     <div class="detials">
                                         <p>Prev Post</p>
-                                        <a href="#"><h4>Previous Nonce</h4></a>
+                                        <a href="#"><h4>Previous Post</h4></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                                     <div class="detials">
                                         <p>Next Post</p>
-                                        <a href="#"><h4>Next Nonce</h4></a>
+                                        <a href="#"><h4>Next Post</h4></a>
                                     </div>
                                     <div class="arrow">
                                         <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>

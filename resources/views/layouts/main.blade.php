@@ -31,7 +31,7 @@
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="/"><img src="img/logo.png" alt=""></a>
+						<a class="navbar-brand logo_h" href="/"><img src="" alt=""></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
@@ -75,10 +75,10 @@
             <ul class="nav navbar-nav navbar-right">
              <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false">Account</a>
+                 aria-expanded="false"><i class="lnr lnr-user"></i></a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="{{ route('profile' , auth()->user()) }}">My Profile</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">My Messages</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/chats">My Messages</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">Logout</a>
 
@@ -124,7 +124,7 @@
 	
 	
 		<!--================Footer Area =================-->
- <footer class="footer_area section_gap_top">
+ <footer class="footer_area">
     <div class ="container">
       <div class="row single-footer-widget">
         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -161,103 +161,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="js/theme.js"></script>
 		<script src="https://js.pusher.com/5.1/pusher.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script> var receiver_id = '';
-			     var my_id = "{{ Auth::id() }}";
-			 	 $(document).ready(function (){
-
-			 	 	$.ajaxSetup({
-			 	 		headers: {
-			 	 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			 	 		}
-			 	 	});
-
-			 	 	// Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('668b2ace96dab23960cc', {
-      cluster: 'eu',
-      forceTLS: true
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      //alert(JSON.stringify(data));
-
-      if(my_id == data.from) {
-      	$('#' + data.to).click();
-      }else if( my_id == data.to) {
-      	if(receiver_id == data.from) {
-      		$('#' + data.from).click();
-      	} else {
-      		var pending = parseInt ($('#' + data.from).find('.pending').html());	
-
-      		if(pending) {
-
-      			$('#' + data.from).find('.pending').html (pending + 1);
-      		} else {
-      			$('#' + data.from).append('<span class="pending">1</span>');
-      		}
-
-      	}
-      }
-    });
-			 	 	
-
-			 	 	$('.user').click(function (){
-			 	 	$('.user').removeClass('active');
-			 	 	$(this).addClass('active');
-			 	 	$(this).find('.pending').remove();
-
-			 	 	receiver_id = $(this).attr('id');
-			 	 	$.ajax({
-			 	 		type: "get",
-			 	 		url: "message/" + receiver_id,
-			 	 		data: "",
-			 	 		cache: false,
-			 	 		success: function(data) {
-			 	 			$('#messages').html(data);
-			 	 			scrollToBottomFunc();
-			 	 		}
-			 	 	});
-
-			 	 });
-
-
-
-			 	 	$(document).on('keyup', '.input-text input', function (e) {
-
-			 	 		var message = $(this).val();
-
-			 	 		if(e.keyCode == 13 && message != '' && receiver_id != '') {
-			 	 			$(this).val('');
-
-			 	 			var datastr = "receiver_id=" + receiver_id + "&message=" + message;
-			 	 			$.ajax({
-			 	 				type: "post",
-			 	 				url: "message",
-			 	 				data: datastr,
-			 	 				cache: false,
-			 	 				success: function(data) {
-
-			 	 				},
-			 	 				error: function (jqXHR, status, err) {
-
-			 	 				},
-			 	 				complete: function () {
-			 	 					scrollToBottomFunc();
-			 	 				}
-			 	 			})
-			 	 		}
-			 	 	});
-
-			 	 });
-
-			 	 function scrollToBottomFunc() {
-			 	 	$('.message-wrapper').animate({
-			 	 		scrollTop: $('.message-wrapper').get(0).scrollHeight }, 50);
-			 	 	
-			 	 }
-
-			 	</script>
+		@include('chat.ajaxchat')
 	</body>
 </html>

@@ -29,7 +29,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="/"><img src="img/logo.png" alt=""></a>
+          <a class="navbar-brand logo_h" href="/"><img src="" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -72,9 +72,10 @@
             <ul class="nav navbar-nav navbar-right">
              <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false">Account</a>
+                 aria-expanded="false"><i class="lnr lnr-user"></i></a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="">My Profile</a></li>
+                 <li class="nav-item"><a class="nav-link" href="{{ route('profile' , auth()->user()) }}">My Profile</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/chats">My Messages</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">Logout</a>
 
@@ -134,7 +135,7 @@
 
   <!--================End recent blogs Area =================-->
   <!--================Footer Area =================-->
-  <footer class="footer_area section_gap_top">
+  <footer class="footer_area">
     <div class ="container">
       <div class="row single-footer-widget">
         <div class="col-lg-6 col-md-6 col-sm-12">

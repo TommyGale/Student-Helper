@@ -2,9 +2,7 @@
 
 use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('index');
-});
+
 
 Route::get('/about', function () {
     return view('about');
@@ -14,29 +12,33 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/' , 'HomeController@index');
+
 Route::get('/chats' , 'ChatsController@index');
 
-Route::get('/message/{id}' , 'ChatsController@getMessage')->name('message');
+Route::get('/message/{id}' , 'ChatsController@show')->name('message');
 
-Route::post('message' , 'ChatsController@sendMessage');
+Route::post('message' , 'ChatsController@create');
 
 //Route::resource('posts' , 'PostsController');
 
-Route::get('/posts' , 'PostsController@index');
+Route::get('posts' , 'PostsController@index');
 
 Route::get('/posts/create' , 'PostsController@create');
 
 Route::get('/posts/{channel}/{post}' , 'PostsController@show');
 
-Route::post('/posts' , 'PostsController@store');
+Route::delete('/posts/{channel}/{post}', 'PostsController@destroy');
 
-Route::get('/posts/{channel}' , 'PostsController@index');
-
-Route::put('/posts/{post}', 'PostsController@update');
+Route::post('posts' , 'PostsController@store');
 
 Route::get('/posts/{channel}/{post}/edit', 'PostsController@edit');
 
-Route::delete('/posts/{channel}/{post}', 'PostsController@destroy');
+Route::put('/posts/{channel}/{post}', 'PostsController@update');
+
+Route::get('/posts/{channel}' , 'PostsController@index');
+
+
 
 
 

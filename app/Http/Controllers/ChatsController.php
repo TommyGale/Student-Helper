@@ -35,7 +35,7 @@ class ChatsController extends Controller
         return view('chat.index' , ['users' => $users]);
     }
 
-    public function getMessage($user_id) {
+    public function show($user_id) {
 
         $my_id = Auth::id();
         Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
@@ -48,7 +48,7 @@ class ChatsController extends Controller
         return view('chat.messages', ['messages' => $messages]);
     }
 
-    public function sendMessage(Request $request) {
+    public function create(Request $request) {
 
         $from = Auth::id();
         $to = $request->receiver_id;

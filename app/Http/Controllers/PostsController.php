@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Channel;
 use App\Filters\PostFilters;
 use App\Post;
-use App\Events\PostCreated;
 use Illuminate\Http\Request;
 
 
@@ -66,7 +65,7 @@ class PostsController extends Controller
     {
          $post->update($this->validData());
 
-        return redirect('/posts/' . $post->id);
+        return redirect('/posts');
     }
 
     public function destroy($channel,Post $post)

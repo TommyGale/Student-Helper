@@ -32,10 +32,10 @@ Edit Post
 		
 		<h1 class="heading has-text-weight-bold is-size-4">Update Post</h1>
 
-		<form method ="POST" action = "/posts/{{ $post->id}}">
+		<form method ="POST" action = "{{ $post->path() }}">
 
-			@csrf
-			@method('PUT')
+			{{ csrf_field() }}
+            {{ method_field('PUT') }}
 
 			<div class = "field">
 				<label class="label" for="channel_id">Choose a Category</label>
@@ -79,8 +79,8 @@ Edit Post
 
 				<form method="POST" action="{{ $post->path() }}">
 
-        		@csrf
-				@method('DELETE')
+        		{{ csrf_field() }}
+                {{ method_field('DELETE') }}
 
         		<div class="field is-grouped">
 						<div class="control">
