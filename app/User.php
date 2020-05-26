@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'user_id')->latest();
     }
 
+     public function events()
+    {
+        return $this->hasMany(Event::class, 'user_id')->latest();
+    }
+
      public function comments()
     {
         return $this->hasMany(Comment::class, 'created_by');

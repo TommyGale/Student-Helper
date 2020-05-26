@@ -2,7 +2,7 @@
 
 @section('title')
 
-Create Post
+Create Event
 
 @endsection
 
@@ -15,13 +15,13 @@ Create Post
 @section('headLinks')
 
 <a href="/">Home</a>
-<a href="/posts/create">Create Posts</a>
+<a href="/events/create">Create Events</a>
 
 @endsection
 
 @section('headContent')
 
-<h2>Posts</h2>
+<h2>Events</h2>
 
 @endsection
 
@@ -39,22 +39,9 @@ Create Post
 		
 		<h1 class="heading has-text-weight-bold is-size-4">Create a New Post</h1>
 
-		<form method ="POST" action = "/posts">
+		<form method ="POST" action = "/events">
 			@csrf
 
-			<div class = "field">
-				<label class="label" for="channel_id">Choose a Category</label>
-
-				<div class= "control">
-
-					<select name="channel_id" id="channel_id" class="form-control" required>
-						<option value="">Choose a Category</option>
-						@foreach ($channels as $channel)
-						<option value ="{{ $channel->id }}" {{ old('channel_id') == $channel->id ? 'selected' : '' }}>{{ $channel->name }}</option>
-						@endforeach
-					</select>
-				
-				</div>
 
 			<div class = "field">
 				<label class="label" for="title">Title</label>
@@ -74,9 +61,27 @@ Create Post
 					</div>
 					</div>
 
+					<div class="field">
+						<label class="label" for="start_date">Start_date</label>
+
+						<div class="contorl">
+						<input type="date" name="start_date" id="start_date" required>{{ old('start_date')}}</textarea>
+
+					</div>
+					</div>
+
+					<div class="field">
+						<label class="label" for="end_date">End_date</label>
+
+						<div class="contorl">
+						<input type="date" name="end_date" id="end_date" required>{{ old('start_date')}}</textarea>
+
+					</div>
+					</div>
+
 					<div class="field is-grouped">
 						<div class="control">
-							<button class ="button is-link" type="submit">Pulish Post</button>
+							<button class ="button is-link" type="submit">Pulish Event</button>
 						</div>
 					</div>
 

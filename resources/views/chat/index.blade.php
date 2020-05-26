@@ -1,8 +1,16 @@
-@extends('layouts.main')
+@extends('layouts.homepage')
 
 @section('title')
 
 My Messages
+
+@endsection
+
+
+
+@section('scripts')
+
+	@include('chat.ajaxchat')
 
 @endsection
 
@@ -145,7 +153,7 @@ My Messages
 @section('headLinks')
 
 <a href="/">Home</a>
-<a href="/posts/create">My Messages</a>
+<a href="/chats">Messages</a>
 
 @endsection
 
@@ -155,7 +163,15 @@ My Messages
 
 @endsection
 
+@section('banner')
+
+@include('layouts.mainbanner')
+
+@endsection
+
 @section('content')
+
+<br>
 
 <div class="container-fluid">
 

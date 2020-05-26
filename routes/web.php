@@ -12,6 +12,7 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+
 Route::get('/' , 'HomeController@index');
 
 Route::get('/chats' , 'ChatsController@index');
@@ -21,6 +22,8 @@ Route::get('/message/{id}' , 'ChatsController@show')->name('message');
 Route::post('message' , 'ChatsController@create');
 
 //Route::resource('posts' , 'PostsController');
+
+
 
 Route::get('posts' , 'PostsController@index');
 
@@ -37,6 +40,22 @@ Route::get('/posts/{channel}/{post}/edit', 'PostsController@edit');
 Route::put('/posts/{channel}/{post}', 'PostsController@update');
 
 Route::get('/posts/{channel}' , 'PostsController@index');
+
+
+
+
+Route::get('events' , 'EventController@index');
+
+Route::get('/events/create' , 'EventController@create');
+
+Route::post('/events' , 'EventController@store');
+
+Route::get('/events/{event}/edit', 'EventController@edit');
+
+Route::put('/events/{event}', 'EventController@update');
+
+Route::delete('/events/{post}', 'EventController@destroy');
+
 
 
 
@@ -61,7 +80,12 @@ Route::post('/comments/{comment}/like' , 'LikeController@commentLiked');
 
 Route::delete('/comments/{comment}/unlike', 'LikeController@commentUnliked');
 
+Route::post('/events/{event}/join' , 'JoinController@eventJoined');
+
+Route::delete('/events/{event}/leave', 'JoinController@eventUnjoined');
+
 Route::get('/profiles/{user}' , 'ProfilesController@show')->name('profile');
+
 
 
 

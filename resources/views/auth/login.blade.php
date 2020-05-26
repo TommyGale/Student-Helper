@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.homepage')
 
 @section('title')
 
@@ -24,6 +24,12 @@ Login
 @section('headContent')
 
 <h2>Login</h2>
+
+@endsection
+
+@section('banner')
+
+@include('layouts.mainbanner')
 
 @endsection
 

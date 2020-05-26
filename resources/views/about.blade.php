@@ -1,10 +1,11 @@
-@extends('layouts.main')
+@extends('layouts.homepage')
 
 @section('title')
 
 About
 
 @endsection
+
 
 @section('headLinks')
 
@@ -19,6 +20,12 @@ About
 
 @endsection
 
+@section('banner')
+
+@include('layouts.mainbanner')
+
+@endsection
+
 @section('content')
 
 <!--================ Start About us Area ================-->
@@ -29,15 +36,14 @@ About
 					<div class="col-lg-6">
 						<div class="section_content">
 							<h6>About Us</h6>
-							<h1>We Believe that <br>Interior beauty Lasts Long</h1>
-							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
-								especially in the workplace. That’s why it’s crucial that as women.</p>
-							<a class="primary_btn" href="#">Learn More</a>
+							<h1>We Believe that your education is important!</h1>
+							<p>The purpose of this website it to benefit your education in anyway we can. Connect with others now to get started!</p>
+							<a class="primary_btn" href="/">Learn More</a>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="about_us_image_box justify-content-center">
-							<img class="img-fluid w-100" src="img/about_img.png" alt="">
+							<img class="img-fluid w-100" src="img/about_icon.jpg" alt="">
 						</div>
 					</div>
 				</div>
@@ -60,77 +66,43 @@ About
 				<div class="row frequent_inner">
 					<div class="col-lg-5 col-md-5">
 						<div class="frequent_item">
-							<h3>We Believe that Interior beauty Lasts Long</h3>
-							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
-								especially in the workplace. That’s why it’s crucial that as women.</p>
+							<h3>How can i make a post on the forums</h3>
+							<p>You can make a post on the website by signing up for an account. Click the join button in the top right of the screen to make an account or login</p>
 						</div>
 					</div>
 					<div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
 						<div class="frequent_item">
-							<h3>We Believe that Interior beauty Lasts Long</h3>
-							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
-								especially in the workplace. That’s why it’s crucial that as women.</p>
+							<h3>Where can i find the chat application?</h3>
+							<p>The chat application can be found by hovering over your account icon in the top right of the screen and selecting "My messages". This is for your protection.
+							</p>
 						</div>
 					</div>
 					<div class="col-lg-5 col-md-5">
 						<div class="frequent_item">
-							<h3>We Believe that Interior beauty Lasts Long</h3>
-							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
-								especially in the workplace. That’s why it’s crucial that as women.</p>
+							<h3>How can i see other users profiles on the website?</h3>
+							<p>The best way to find another users profile is by selecting there name from something they have posted on. This provides a link directly to their profile page.</p>
 						</div>
 					</div>
 					<div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
 						<div class="frequent_item">
-							<h3>We Believe that Interior beauty Lasts Long</h3>
-							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
-								especially in the workplace. That’s why it’s crucial that as women.</p>
+							<h3>What is the purpose of the dashboard?</h3>
+							<p>The dashboard or profile page shows all the details about the user such as their name, email and when they joined the website. You can also see an activity feed of their latest actions on the website.</p>
 						</div>
 					</div>
 					<div class="col-lg-5 col-md-5">
 						<div class="frequent_item last-child">
-							<h3>We Believe that Interior beauty Lasts Long</h3>
-							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
-								especially in the workplace. That’s why it’s crucial that as women.</p>
+							<h3>How can i contact an admin?</h3>
+							<p>The best way to communicate with a member of staff is either by direct messaging through the chat application or by using the contact form. The contact form can be used to send an email to the owner of the website.</p>
 						</div>
 					</div>
 					<div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
 						<div class="frequent_item last-child">
-							<h3>We Believe that Interior beauty Lasts Long</h3>
-							<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards
-								especially in the workplace. That’s why it’s crucial that as women.</p>
+							<h3>What happens when i join an event?</h3>
+							<p>When you join an event you are added to the list of participants for the event.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!--================ End Frequently Asked Questions Area ================-->
-
-		<!--================ Start Newsletter Area ================-->
-		<section class="newsletter_area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<div class="newsletter_inner">
-							<h1>Subscribe Our Newsletter</h1>
-							<p>We won’t send any kind of spam</p>
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<aside class="newsletter_widget">
-							<div id="mc_embed_signup">
-								<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-								 method="get" class="subscribe_form relative">
-									<div class="input-group d-flex flex-row">
-										<input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'"
-										 required="" type="email">
-										<button class="btn primary_btn">Subscribe</button>
-									</div>
-								</form>
-							</div>
-						</aside>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--================ End Newsletter Area ================-->
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.homepage')
 
 @section('title')
 
@@ -16,6 +16,12 @@ Register
 @section('headContent')
 
 <h2>Register</h2>
+
+@endsection
+
+@section('banner')
+
+@include('layouts.mainbanner')
 
 @endsection
 

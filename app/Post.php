@@ -26,11 +26,11 @@ class Post extends Model
             $builder->withCount('comments');
         });
 
-        static::deleting(function ($post) {
+        //static::deleting(function ($post) {
 
-          $post->comments->each->delete();
-          $post->likes()->delete();
-        });
+         // $post->comments->each->delete();
+         // $post->likes()->delete();
+      //  });
 
     }
 

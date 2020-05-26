@@ -17,11 +17,8 @@
         <link rel="stylesheet" href="{{ URL::asset('vendors/nice-select/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('vendors/animate-css/animate.css') }}">
         <!-- main css -->
-        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
-
-
-
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     </head>
     <body class="about_page">
 
@@ -60,7 +57,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                  aria-expanded="false">Event Planner</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="">All Events</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
                 </ul>
 
                 </li>

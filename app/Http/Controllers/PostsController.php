@@ -72,6 +72,8 @@ class PostsController extends Controller
     {
       //$post->comments()->delete();
       //$post->likes()->delete();
+    $post->likes()->delete();
+      $post->comments()->delete();
       $post->delete();
 
       return redirect('/posts');
@@ -97,7 +99,7 @@ class PostsController extends Controller
         $posts->where('channel_id', $channel->id); 
         }
 
-        return $posts->latest()->get();
+        return $posts->latest()->paginate(5);
 }
 
     }

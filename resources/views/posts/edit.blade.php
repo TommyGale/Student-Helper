@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.homepage')
 
 @section('title')
 
@@ -22,6 +22,12 @@ Edit Post
 @section('headContent')
 
 <h2>Posts</h2>
+
+@endsection
+
+@section('banner')
+
+@include('layouts.mainbanner')
 
 @endsection
 

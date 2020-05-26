@@ -2,7 +2,7 @@
 
 @section('title')
 
-Edit Comment
+Edit Event
 
 @endsection
 
@@ -15,13 +15,13 @@ Edit Comment
 @section('headLinks')
 
 <a href="/">Home</a>
-<a href="/posts/create">Edit Comments</a>
+<a href="/events/create">Edit Comments</a>
 
 @endsection
 
 @section('headContent')
 
-<h2>Comments</h2>
+<h2>Events</h2>
 
 @endsection
 
@@ -39,7 +39,7 @@ Edit Comment
 		
 		<h1 class="heading has-text-weight-bold is-size-4">Update Comment</h1>
 
-		<form method ="POST" action = "/comments/{{ $comment->id}}">
+		<form method ="POST" action = "/events/{{ $event->id}}">
 
 			{{ csrf_field() }}
             {{ method_field('PUT') }}

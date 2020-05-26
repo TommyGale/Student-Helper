@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.homepage')
 
 @section('title')
 
@@ -16,6 +16,12 @@ Contact
 @section('headContent')
 
 <h2>Contact Us</h2>
+
+@endsection
+
+@section('banner')
+
+@include('layouts.mainbanner')
 
 @endsection
 
