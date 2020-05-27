@@ -15,8 +15,8 @@ Posts
     .postDiv {
   border: 0.5px outset black;
   padding: 10px;
-  background-color: #e6f7f6;
-  border-radius: 25px;
+  background-color: #fafaff;
+
 
   
 }
@@ -124,7 +124,7 @@ Posts
                         <div class="postDiv">
                     <a href="{{ $post->path()}}"><h2>{{ $post->title }}</h2></a>
                     <p> Category: <a href="posts/{{ $post->channel->slug}}">{{ $post->channel->slug}}</p></a>
-                    <p>Last updated {{ $post->updated_at->diffForHumans()}} by <a href="{{ route('profile' , $post->user)}}"">{{ $post->user->name}}</p></a>
+                    <p>Last updated {{ $post->updated_at->diffForHumans()}} by <a href="{{ route('profile' , $post->user)}}">{{ $post->user->name}}</p></a>
                     <p>{{$post->comments_count }}<i class="fa fa-comments-o"></i>       {{$post->likes->count() }}<i class="fa fa-heart"></i></p>
                     <hr>
                     <p>{{ $post->description}}</p>

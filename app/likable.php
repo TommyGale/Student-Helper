@@ -19,7 +19,7 @@ trait Likable {
 
    public function postIsLiked(){
 
-    return $this->likes()->where('user_id', auth()->id())->exists();
+    return $this->likes()->where('user_id', auth()->id())->count();
 
 }
 

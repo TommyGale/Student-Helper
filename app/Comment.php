@@ -19,11 +19,11 @@ class Comment extends Model
     {
         parent::boot();
 
-        static::deleting(function ($comment) {
+       // static::deleting(function ($comment) {
 
-          $comment->delete();
-          $likes->delete();
-        });
+        //  $comment->delete();
+       //   $likes->delete();
+      //  });
     }
     
     public function post(){

@@ -67,14 +67,13 @@ Route::post('/posts/{channel}/{post}/comments' , 'CommentsController@store');
 
 Route::put('/comments/{comment}', 'CommentsController@update');
 
-Route::get('/posts/{post}/comments/{comment}/edit', 'CommentsController@edit');
-
 Route::delete('/comments/{comment}', 'CommentsController@destroy');
 
+Route::get('/comments/{comment}/edit', 'CommentsController@edit');
 
-Route::post('/posts/{post}/like' , 'LikeController@postLiked');
+Route::post('/posts/{channel}/{post}/like' , 'LikeController@postLiked');
 
-Route::delete('/posts/{post}/unlike', 'LikeController@postUnliked');
+Route::delete('/posts/{channel}/{post}/unlike' , 'LikeController@postUnliked');
 
 Route::post('/comments/{comment}/like' , 'LikeController@commentLiked');
 

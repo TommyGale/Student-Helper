@@ -8,8 +8,14 @@ Events
 
 <style>
     
+    h4 {
+    	color:white;
+        text-decoration: underline;
+    }
+
     h3 {
-        text-align: center;
+
+    	text-align: center;
     }
 
     .postDiv {
@@ -29,11 +35,6 @@ Events
 
 </style>
 
-@section('head')
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
-
-@endsection
 
 @section('headLinks')
 
@@ -87,12 +88,22 @@ Events
               <img class="img-fluid" src="" alt="">
             </div>
             <div class="blog_content">
-            	<p><b><u>{{ $event->title}}</u></b></p>
-              <p>Last updated {{ $event->updated_at->diffForHumans()}} by <a href="{{ route('profile' , $event->user)}}">{{ $event->user['name']}}</p></a>
-              <p>{{ $event->description}}</p>
-              @if(auth()->check())
+            	<h4>{{ $event->title}}</h4>
+              Last updated {{ $event->updated_at->diffForHumans()}} by <a href="{{ route('profile' , $event->user)}}">{{ $event->user['name']}}</a>
+              <hr>
+              {{ $event->description}}
+  
 
-                                            @if($event->eventIsJoined())
+                                           
+              <div class="date">
+
+                  
+
+                <p>Start date: {{ $event->start_date}} <br> End date: {{ $event->end_date}} <br> Attendees: {{$event->join_count}}</p>
+                
+              </div>
+              @if(auth()->check())
+               @if($event->eventIsJoined())
                                         <form method="POST" action ="/events/{{$event->id}}/leave">
                                         @method('DELETE')
                                         @csrf
@@ -115,22 +126,17 @@ Events
                                          @can('update', $event)
                                             <a href="{{ $event->id}}/edit" class="blog_btn">Update Event</a>
                                             @endcan
-              <div class="date">
-
-                  
-
-                <a href="#">Start date: {{ $event->start_date}}</a>
-                <a href="#">End date: {{ $event->end_date}}</a>
-                <br>
-                <a href="#">People going: {{$event->join_count}}</a>
-              </div>
             </div>
           </div>
           <br>
         </div>
         @endforeach
+
     </div>
+      {{ $events->links()}}
+
   </div>
+
 </section>
 
 

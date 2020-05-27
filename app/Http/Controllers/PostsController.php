@@ -46,7 +46,7 @@ class PostsController extends Controller
     {
 
         return view('posts.show' , [ 'post' => $post,
-                                     'comments' => $post->comments()->paginate(10)]);
+                                     'comments' => $post->comments()->paginate(5)]);
     }
 
    
@@ -70,13 +70,12 @@ class PostsController extends Controller
 
     public function destroy($channel,Post $post)
     {
-      //$post->comments()->delete();
-      //$post->likes()->delete();
-    $post->likes()->delete();
-      $post->comments()->delete();
-      $post->delete();
+
+        $post->delete();
 
       return redirect('/posts');
+    
+      
     }
 
 

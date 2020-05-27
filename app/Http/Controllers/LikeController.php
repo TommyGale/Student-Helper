@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\Channel;
 
 
 class LikeController extends Controller
@@ -15,7 +16,7 @@ class LikeController extends Controller
         $this->middleware('auth')->except(['']);
     }
    
-public function postLiked(Post $post){
+public function postLiked($channel, Post $post){
 
 		$post->like();
 
@@ -24,7 +25,7 @@ public function postLiked(Post $post){
 }
 
 
-public function postUnliked(Post $post){
+public function postUnliked($channel, Post $post){
 
 		$user = auth()->user()->id;
 

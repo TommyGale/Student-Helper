@@ -13,11 +13,11 @@ class CommentsController extends Controller
         $this->middleware('auth')->except(['index','show']);
     }
 
-     public function update(Comment $comment , Post $post)
+     public function update(Comment $comment)
     {
         $comment->update($this->validData());
 
-        return redirect('/posts/' . $comment->post->id);
+        return redirect('/posts');
     }
     
     
@@ -32,7 +32,7 @@ class CommentsController extends Controller
         return back();
     }
 
-    public function edit(Post $post, Comment $comment)
+    public function edit(Comment $comment)
     {
 
     	if($comment->user_id !== auth()->id()){
@@ -43,12 +43,13 @@ class CommentsController extends Controller
         return view ('comments.edit', compact('comment')); 
     }
     
-    public function destroy(Post $post, Comment $comment)
+    public function destroy(Comment $comment)
     {
       $comment->delete();
 
-      return redirect('/posts/' . $comment->post->id);
-    }
+      return redirect('/posts');
+      
+          }
      protected function validData() {
         
         return request()->validate([

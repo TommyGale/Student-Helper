@@ -18,7 +18,8 @@ class EventController extends Controller
     public function index()
     {
 
-        $events = Event::all();
+        $events = Event::paginate(9);
+
 
         return view('events.index' , compact('events'));
     }
@@ -81,7 +82,7 @@ class EventController extends Controller
          'title' => ['required', 'min:4','max:50'],
         'description' => ['required', 'min:10','max:255'], 
         'start_date' => ['required',],
-        'end_date' => ['required',]
+        '' => ['required',]
         ]);
 
     }

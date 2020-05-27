@@ -1,15 +1,15 @@
 <br>
-                                <div class="single-comment justify-content-between d-flex">
+
+
                                     <div class="user justify-content-between d-flex">
-                                        <div class="box">
                                         <div class="desc">
                                             <h5><a href="{{ route('profile' , $comment->user)}}">{{ $comment->user->name }}</a> posted: {{ $comment->created_at->diffForHumans()}}</h5>
-                                            <p class="lnr lnr-thumbs-up"> {{$comment->like_count }}</p>
+                                            <p class="fa fa-heart"> {{$comment->like_count }}</p>
                                             <p class="comment">
                                                 {{ $comment->description}}
                                             </p>
                                             @can('update', $comment)
-                                        <a href="/posts/{{ $post->id}}/comments/{{ $comment->id}}/edit" class="text-uppercase">Edit Comment</a>
+                                        <a href="/comments/{{ $comment->id}}/edit" class="">Edit Comment</a>
                                          @endcan
                                         </div>
                                             <br>
@@ -19,7 +19,7 @@
                                         @method('DELETE')
                                         @csrf
                                         
-                                        <button class ="button is-link lnr lnr-thumbs-down" type="submit">Unlike</button>
+                                        <button class ="blog_btn" type="submit">Unlike</button>
                                         </form>
                                         @else
 
@@ -27,13 +27,10 @@
                            
                                         @csrf
                                         
-                                        <button class ="button is-link lnr lnr-thumbs-up" type="submit" {{ $comment->commentIsLiked() ? 'disabled' : '' }} >Like</button>
+                                        <button class ="blog_btn" type="submit" {{ $comment->commentIsLiked() ? 'disabled' : '' }} >Like</button>
                                         </form>
 
                                         @endif
                                         @endif
                                     </div>
      
-                                </div>
-                                <br>
-                            </div>
